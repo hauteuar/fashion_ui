@@ -27,7 +27,8 @@ function App() {
         },
       });
       setResult(`Skin Color: ${response.data.skin_color}, Skin Tone: ${response.data.skin_tone}, Skin Texture: ${response.data.skin_texture}`);
-      setAnnotatedImageUrl(response.data.annotated_image_url);
+      // Add a unique query parameter to the image URL to force refresh
+      setAnnotatedImageUrl(`${response.data.annotated_image_url}?t=${new Date().getTime()}`);
     } catch (error) {
       console.error('Error analyzing skin tone:', error);
       alert('Error analyzing skin tone. Please try again.');
